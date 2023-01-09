@@ -1,1 +1,12 @@
-<p>color-home works!</p>
+<header>
+  <h1>{{headerText}}</h1>
+</header>
+
+<ul>
+  <li *ngIf="!colors.length">
+    No colors.
+  </li>
+  <li *ngFor="let color of colors">
+    {{color.name}} - {{color.hexcode}}
+  </li>
+</ul>
