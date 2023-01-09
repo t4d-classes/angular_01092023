@@ -1,6 +1,9 @@
-<header>
-  <h1>{{headerText}}</h1>
-</header>
+
+<!-- static text for the input -->
+<app-tool-header headerText="Color Tool Static"></app-tool-header>
+
+<!-- result of angular expression for the input -->
+<app-tool-header [headerText]="headerText"></app-tool-header>
 
 <ul>
   <li *ngIf="!colors.length">
