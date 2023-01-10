@@ -1,3 +1,4 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
 <app-color-list [colors]="colors"></app-color-list>
-<app-color-form></app-color-form>
+<app-color-form buttonText="Add Color"
+  (submitColor)="addColor($event)"></app-color-form>
