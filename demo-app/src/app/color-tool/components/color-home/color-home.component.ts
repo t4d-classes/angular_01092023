@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
 
 @Component({
-  selector: 'app-color-home',
+  selector: '.app-color-home', // any valid css
   templateUrl: './color-home.component.html',
   styleUrls: ['./color-home.component.css'],
 })

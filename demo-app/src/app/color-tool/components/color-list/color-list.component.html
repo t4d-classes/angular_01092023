@@ -2,7 +2,12 @@
   <li *ngIf="!colors.length">
     No colors.
   </li>
-  <li *ngFor="let color of colors">
-    {{color.name}} - {{color.hexcode}}
-  </li>
+  <ng-container *ngFor="let color of colors">
+    <li>
+      {{color.name}}
+    </li>
+    <li>
+      {{color.hexcode}}
+    </li>  
+  </ng-container>
 </ul>
