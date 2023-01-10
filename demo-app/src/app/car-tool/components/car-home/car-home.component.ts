@@ -21,4 +21,13 @@ export class CarHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  doDeleteCar(carId: number) {
+    this.cars = this.cars.filter(c => c.id !== carId);
+  }
+
+  // deleteCarByIndex(carIndex: number) {
+  //   this.cars = this.cars.filter((_, idx) => idx !== carIndex);
+  // }
+
+
 }

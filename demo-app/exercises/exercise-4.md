@@ -8,6 +8,6 @@
 
 4. Add a new column to the table with a header of "Actions".
 
-5. In the new column of the car table add a delete button on each car data row. When the button is clicked remove the row from the table.
+5. In the new "Actions" column of the car table add a delete button on each car data row. When the button is clicked remove the row from the table.
 
 6. Ensure it works!
