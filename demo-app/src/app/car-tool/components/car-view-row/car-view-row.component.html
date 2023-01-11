@@ -3,7 +3,7 @@
 <td>{{car.model}}</td>
 <td>{{car.year}}</td>
 <td>{{car.color}}</td>
-<td>{{car.price}}</td>
+<td>{{car.price | currency}}</td>
 <td>
   <button (click)="editCar.emit(car.id)">Edit</button>
   <button (click)="deleteCar.emit(car.id)">Delete</button>
