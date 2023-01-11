@@ -17,7 +17,7 @@ export class ColorHomeComponent {
     { id: 3, name: 'blue', hexcode: '0000ff' },
   ];
 
-  addColor(newColor: NewColor) {
+  doAddColor(newColor: NewColor) {
 
     this.colors = [
       ...this.colors,
@@ -27,4 +27,8 @@ export class ColorHomeComponent {
       },
     ];
   }
+
+  doDeleteColor(colorId: number) {
+    this.colors = this.colors.filter((c) => c.id !== colorId);
+  }  
 }
