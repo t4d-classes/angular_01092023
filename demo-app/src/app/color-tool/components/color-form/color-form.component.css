@@ -1,0 +1,9 @@
+
+input + span {
+  display: none;
+}
+
+input.ng-touched.ng-invalid + span {
+  color: red;
+  display: inline;
+}

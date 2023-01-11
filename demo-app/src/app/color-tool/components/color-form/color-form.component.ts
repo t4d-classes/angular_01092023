@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NewColor } from '../../models/colors';
+
+import { createHexcodeValidator } from 'src/app/shared/validators/hexcodevalidator';
 
 @Component({
   selector: 'app-color-form',
@@ -16,6 +18,15 @@ export class ColorFormComponent implements OnInit {
 
   colorForm!: FormGroup;
 
+  get showColorNameError() {
+    const colorNameControl = this.colorForm.get('name');
+    return colorNameControl?.errors?.['required'] && colorNameControl?.touched;
+  }
+
+  get hexCodeErrors() {
+    return this.colorForm.get('hexcode')?.errors;
+  }
+
   // private fb: FormBuilder;
   // constructor(fb: FormBuilder) {
   //   this.fb = fb;
@@ -25,12 +36,17 @@ export class ColorFormComponent implements OnInit {
 
   ngOnInit() {
     this.colorForm = this.fb.group({
-      name: '',
-      hexcode: '',
+      name: ['', { validators: [Validators.required] }],
+      hexcode: [
+        '',
+        { validators: [Validators.required, createHexcodeValidator(6)] },
+      ],
     });
   }
 
   doSubmitColor() {
     this.submitColor.emit(this.colorForm.value);
+
+    this.colorForm.get('name')?.touched;
   }
 }

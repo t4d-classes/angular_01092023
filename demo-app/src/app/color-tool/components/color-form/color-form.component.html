@@ -2,10 +2,16 @@
   <label>
     Name:
     <input type="text" formControlName="name">
+    <span>CSS Name is required.</span>
+    <span *ngIf="showColorNameError">
+      JS Name is required.
+    </span>
   </label>
   <label>
     Hexcode:
     <input type="text" formControlName="hexcode">
+    <span>Hexcode must be 6 hex numbers.</span>
+    {{hexCodeErrors | json}}
   </label>
   <button (click)="doSubmitColor()">
     {{buttonText}}
