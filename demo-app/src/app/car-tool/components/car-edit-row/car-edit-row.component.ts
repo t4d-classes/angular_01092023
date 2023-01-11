@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 
 import { Car } from '../../models/cars';
@@ -11,6 +11,12 @@ import { Car } from '../../models/cars';
 export class CarEditRowComponent implements OnInit {
   @Input()
   car!: Car;
+
+  @Output()
+  saveCar = new EventEmitter<Car>();
+
+  @Output()
+  cancelCar = new EventEmitter<void>();
 
   carForm = this.fb.group({
     make: '',
@@ -30,5 +36,16 @@ export class CarEditRowComponent implements OnInit {
       color: this.car.color,
       price: this.car.price,
     });
+  }
+
+  doSaveCar() {
+    this.saveCar.emit({
+      ...this.carForm.value,
+      id: this.car.id,
+    } as Car);
+  }
+
+  doCancelCar() {
+    this.cancelCar.emit();
   }
 }

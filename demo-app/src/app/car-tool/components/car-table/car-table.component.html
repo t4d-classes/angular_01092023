@@ -20,7 +20,9 @@
       </tr>
       <tr *ngIf="editCarId === car.id"
         class="car-edit-row"
-        [car]="car">
+        [car]="car"
+        (saveCar)="doSaveCar($event)"
+        (cancelCar)="doCancelCar()">
       </tr>
     </ng-container>
   </tbody>

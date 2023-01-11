@@ -32,6 +32,10 @@ export class CarHomeComponent implements OnInit {
     this.editCarId = carId;
   }
 
+  doCancelCar() {
+    this.editCarId = -1;
+  }
+
   doAddCar(newCar: NewCar) {
     this.cars = [
       ...this.cars,
@@ -40,9 +44,20 @@ export class CarHomeComponent implements OnInit {
         ...newCar,
       },
     ];
+    this.editCarId = -1;
   }
 
   doDeleteCar(carId: number) {
     this.cars = this.cars.filter((c) => c.id !== carId);
+    this.editCarId = -1;
+  }
+
+  doSaveCar(car: Car) {
+    const carIndex = this.cars.findIndex((c) => c.id === car.id);
+    const newCars = [...this.cars];
+    newCars[carIndex] = car;
+    this.cars = newCars;
+
+    this.editCarId = -1;
   }
 }

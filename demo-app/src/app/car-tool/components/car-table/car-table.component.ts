@@ -20,6 +20,12 @@ export class CarTableComponent implements OnInit {
   @Output()
   deleteCar = new EventEmitter<number>();
 
+  @Output()
+  saveCar = new EventEmitter<Car>();
+
+  @Output()
+  cancelCar = new EventEmitter<void>();
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -30,5 +36,13 @@ export class CarTableComponent implements OnInit {
 
   doDeleteCar(carId: number) {
     this.deleteCar.emit(carId);
+  }
+
+  doSaveCar(car: Car) {
+    this.saveCar.emit(car);
+  }
+
+  doCancelCar() {
+    this.cancelCar.emit();
   }
 }
