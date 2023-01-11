@@ -48,7 +48,10 @@ export class CarHomeComponent implements OnInit {
   }
 
   doDeleteCar(carId: number) {
-    this.cars = this.cars.filter((c) => c.id !== carId);
+    const carIndex = this.cars.findIndex((c) => c.id === carId);
+    const newCars = [...this.cars];
+    newCars.splice(carIndex, 1);
+    this.cars = newCars;
     this.editCarId = -1;
   }
 
@@ -57,7 +60,6 @@ export class CarHomeComponent implements OnInit {
     const newCars = [...this.cars];
     newCars[carIndex] = car;
     this.cars = newCars;
-
     this.editCarId = -1;
   }
 }
