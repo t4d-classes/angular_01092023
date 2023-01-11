@@ -20,8 +20,17 @@ export class CarHomeComponent implements OnInit {
       year: 2020,
       color: 'red',
       price: 120000,
+      archived: false,
     },
-    { id: 2, make: 'Ford', model: 'T', year: 1922, color: 'black', price: 800 },
+    {
+      id: 2,
+      make: 'Ford',
+      model: 'T',
+      year: 1922,
+      color: 'black',
+      price: 800,
+      archived: false,
+    },
   ];
 
   constructor() {}
@@ -59,6 +68,19 @@ export class CarHomeComponent implements OnInit {
     const carIndex = this.cars.findIndex((c) => c.id === car.id);
     const newCars = [...this.cars];
     newCars[carIndex] = car;
+    this.cars = newCars;
+    this.editCarId = -1;
+  }
+
+  doArchiveCar(carId: number) {
+    const carIndex = this.cars.findIndex((c) => c.id === carId);
+    const newCars = [...this.cars];
+
+    const newCar = { ...newCars[carIndex] };
+    newCar.archived = true;
+
+    newCars[carIndex] = newCar;
+
     this.cars = newCars;
     this.editCarId = -1;
   }

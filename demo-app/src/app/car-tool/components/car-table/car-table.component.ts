@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 import { Car } from '../../models/cars';
 
@@ -6,43 +6,19 @@ import { Car } from '../../models/cars';
   selector: 'app-car-table',
   templateUrl: './car-table.component.html',
   styleUrls: ['./car-table.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+  
 })
-export class CarTableComponent implements OnInit {
+export class CarTableComponent {
   @Input()
   cars: Car[] = [];
 
   @Input()
   editCarId = -1;
 
-  @Output()
-  editCar = new EventEmitter<number>();
-
-  @Output()
-  deleteCar = new EventEmitter<number>();
-
-  @Output()
-  saveCar = new EventEmitter<Car>();
-
-  @Output()
-  cancelCar = new EventEmitter<void>();
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  doEditCar(carId: number) {
-    this.editCar.emit(carId);
-  }
-
-  doDeleteCar(carId: number) {
-    this.deleteCar.emit(carId);
-  }
-
-  doSaveCar(car: Car) {
-    this.saveCar.emit(car);
-  }
-
-  doCancelCar() {
-    this.cancelCar.emit();
-  }
+  @Output() editCar = new EventEmitter<number>();
+  @Output() deleteCar = new EventEmitter<number>();
+  @Output() archiveCar = new EventEmitter<number>();
+  @Output() saveCar = new EventEmitter<Car>();
+  @Output() cancelCar = new EventEmitter<void>();
 }

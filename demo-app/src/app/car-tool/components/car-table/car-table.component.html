@@ -7,6 +7,7 @@
       <th>Year</th>
       <th>Color</th>
       <th>Price</th>
+      <th>Status</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -15,14 +16,15 @@
       <tr *ngIf="editCarId !== car.id"
         class="car-view-row"
         [car]="car"
-        (editCar)="doEditCar($event)"
-        (deleteCar)="doDeleteCar($event)">
+        (editCar)="editCar.emit($event)"
+        (deleteCar)="deleteCar.emit($event)"
+        (archiveCar)="archiveCar.emit($event)">
       </tr>
       <tr *ngIf="editCarId === car.id"
         class="car-edit-row"
         [car]="car"
-        (saveCar)="doSaveCar($event)"
-        (cancelCar)="doCancelCar()">
+        (saveCar)="saveCar.emit($event)"
+        (cancelCar)="cancelCar.emit()">
       </tr>
     </ng-container>
   </tbody>

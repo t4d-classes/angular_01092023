@@ -16,4 +16,7 @@ export class CarViewRowComponent {
 
   @Output()
   editCar = new EventEmitter<number>();
+
+  @Output()
+  archiveCar = new EventEmitter<number>();
 }

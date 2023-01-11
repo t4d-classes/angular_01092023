@@ -44,8 +44,4 @@ export class CarEditRowComponent implements OnInit {
       id: this.car.id,
     } as Car);
   }
-
-  doCancelCar() {
-    this.cancelCar.emit();
-  }
 }

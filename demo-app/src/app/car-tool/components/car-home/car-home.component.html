@@ -1,5 +1,6 @@
 <app-tool-header [headerText]="headerText | myUppercase | myAppend:'!!!!'"></app-tool-header>
 <app-car-table [cars]="cars" [editCarId]="editCarId"
   (editCar)="doEditCar($event)" (deleteCar)="doDeleteCar($event)"
-  (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar()"></app-car-table>
+  (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar()"
+  (archiveCar)="doArchiveCar($event)"></app-car-table>
 <app-car-form buttonText="Add Car" (submitCar)="doAddCar($event)"></app-car-form>

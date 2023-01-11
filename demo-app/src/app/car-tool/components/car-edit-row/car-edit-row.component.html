@@ -5,8 +5,9 @@
   <td><input formControlName="year"></td>
   <td><input formControlName="color"></td>
   <td><input formControlName="price"></td>
+  <td>{{car.archived | archived}}</td>
   <td>
-    <button>Save</button>
-    <button>Cancel</button>
+    <button (click)="doSaveCar()">Save</button>
+    <button (click)="cancelCar.emit()">Cancel</button>
   </td>
 </ng-container>

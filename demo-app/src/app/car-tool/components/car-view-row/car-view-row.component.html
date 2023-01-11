@@ -4,8 +4,10 @@
 <td>{{car.year}}</td>
 <td>{{car.color}}</td>
 <td>{{car.price | currency}}</td>
+<td>{{car.archived | archived}}</td>
 <td>
   <button (click)="editCar.emit(car.id)">Edit</button>
   <button (click)="deleteCar.emit(car.id)">Delete</button>
+  <button (click)="archiveCar.emit(car.id)">Archive</button>
 </td>
 

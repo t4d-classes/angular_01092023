@@ -5,6 +5,7 @@ export type Car = {
   year: number;
   color: string;
   price: number;
+  archived: boolean;
 };
 
 export type NewCar = Omit<Car, 'id'>;
