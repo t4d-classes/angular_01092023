@@ -11,10 +11,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars"
-      class="car-view-row"
-      [car]="car"
-      (deleteCar)="doDeleteCar($event)">
-    </tr>
+    <ng-container *ngFor="let car of cars">
+      <tr *ngIf="editCarId !== car.id"
+        class="car-view-row"
+        [car]="car"
+        (editCar)="doEditCar($event)"
+        (deleteCar)="doDeleteCar($event)">
+      </tr>
+      <tr *ngIf="editCarId === car.id"
+        class="car-edit-row"
+        [car]="car">
+      </tr>
+    </ng-container>
   </tbody>
 </table>

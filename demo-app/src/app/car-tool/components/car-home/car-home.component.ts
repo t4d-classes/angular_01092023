@@ -10,6 +10,8 @@ import { Car, NewCar } from '../../models/cars';
 export class CarHomeComponent implements OnInit {
   headerText = 'Car Tool';
 
+  editCarId = -1;
+
   cars: Car[] = [
     {
       id: 1,
@@ -25,6 +27,10 @@ export class CarHomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  doEditCar(carId: number) {
+    this.editCarId = carId;
+  }
 
   doAddCar(newCar: NewCar) {
     this.cars = [
