@@ -1,5 +1,5 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
-<app-color-list [colors]="colors"
+<app-color-list [colors]="colors$ | async"
   (deleteColor)="doDeleteColor($event)"></app-color-list>
 <app-color-form buttonText="Add Color"
   (submitColor)="doAddColor($event)"></app-color-form>

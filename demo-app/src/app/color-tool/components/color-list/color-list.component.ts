@@ -9,7 +9,7 @@ import { Color } from '../../models/colors';
 })
 export class ColorListComponent {
   @Input()
-  public colors: Color[] = [];
+  public colors: Color[] | null = [];
 
   @Output()
   public deleteColor = new EventEmitter<number>();

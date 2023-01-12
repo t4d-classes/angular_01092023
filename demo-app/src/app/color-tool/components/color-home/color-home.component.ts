@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
-import { ColorToolStoreService } from '../../services/color-tool-store.service';
+import { ColorsState, AppendColor, RemoveColor } from '../../colors.state';
 
 @Component({
   selector: '.app-color-home', // any valid css
@@ -9,27 +12,21 @@ import { ColorToolStoreService } from '../../services/color-tool-store.service';
   styleUrls: ['./color-home.component.css'],
 })
 export class ColorHomeComponent implements OnInit {
+  @Select(ColorsState) colors$!: Observable<Color[]>;
+
   headerText: string = 'Color Tool';
 
   colors: Color[] = [];
 
-  constructor(private colorToolStoreSvc: ColorToolStoreService) {}
+  constructor(private store: Store) {}
 
-  ngOnInit(): void {
-    this.doRefreshColors();
-  }
-
-  doRefreshColors() {
-    this.colors = this.colorToolStoreSvc.all();
-  }
+  ngOnInit(): void {}
 
   doAddColor(color: NewColor) {
-    this.colorToolStoreSvc.append(color);
-    this.doRefreshColors();
+    this.store.dispatch(new AppendColor(color));
   }
 
   doDeleteColor(colorId: number) {
-    this.colorToolStoreSvc.remove(colorId);
-    this.doRefreshColors();
+    this.store.dispatch(new RemoveColor(colorId));
   }
 }
