@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ColorsService {
   private colors: Color[] = [
     { id: 1, name: 'red', hexcode: 'ff0000' },

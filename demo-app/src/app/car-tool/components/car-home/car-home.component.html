@@ -1,6 +1,10 @@
 <app-tool-header [headerText]="headerText | myUppercase | myAppend:'!!!!'"></app-tool-header>
-<app-car-table [cars]="cars" [editCarId]="editCarId"
-  (editCar)="doEditCar($event)" (deleteCar)="doDeleteCar($event)"
-  (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar()"
-  (archiveCar)="doArchiveCar($event)"></app-car-table>
-<app-car-form buttonText="Add Car" (submitCar)="doAddCar($event)"></app-car-form>
+<app-car-table [cars]="carToolStoreSvc.cars"
+  [editCarId]="carToolStoreSvc.editCarId"
+  (editCar)="carToolStoreSvc.editCar($event)"
+  (deleteCar)="carToolStoreSvc.deleteCar($event)"
+  (saveCar)="carToolStoreSvc.saveCar($event)"
+  (cancelCar)="carToolStoreSvc.cancelCar()"
+  (archiveCar)="carToolStoreSvc.archiveCar($event)"></app-car-table>
+<app-car-form buttonText="Add Car"
+  (submitCar)="carToolStoreSvc.addCar($event)"></app-car-form>
