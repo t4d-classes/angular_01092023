@@ -12,7 +12,7 @@ import { ColorsState, AppendColor, RemoveColor } from '../../colors.state';
   styleUrls: ['./color-home.component.css'],
 })
 export class ColorHomeComponent implements OnInit {
-  @Select(ColorsState) colors$!: Observable<Color[]>;
+  @Select(ColorsState.colors) colors$!: Observable<Color[]>;
 
   headerText: string = 'Color Tool';
 
