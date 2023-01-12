@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
-import { ColorsService } from '../../services/colors.service';
+import { ColorToolStoreService } from '../../services/color-tool-store.service';
 
 @Component({
   selector: '.app-color-home', // any valid css
@@ -13,23 +13,23 @@ export class ColorHomeComponent implements OnInit {
 
   colors: Color[] = [];
 
-  constructor(private colorsSvc: ColorsService) {}
+  constructor(private colorToolStoreSvc: ColorToolStoreService) {}
 
   ngOnInit(): void {
     this.doRefreshColors();
   }
 
   doRefreshColors() {
-    this.colors = this.colorsSvc.all();
+    this.colors = this.colorToolStoreSvc.all();
   }
 
   doAddColor(color: NewColor) {
-    this.colorsSvc.append(color);
+    this.colorToolStoreSvc.append(color);
     this.doRefreshColors();
   }
 
   doDeleteColor(colorId: number) {
-    this.colorsSvc.remove(colorId);
+    this.colorToolStoreSvc.remove(colorId);
     this.doRefreshColors();
   }
 }
