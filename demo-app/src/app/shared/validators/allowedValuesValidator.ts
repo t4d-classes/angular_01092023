@@ -24,7 +24,9 @@ export function createAllowedValuesValidator(values: string[] = []) {
   };
 }
 
-export function isAllowedValuesError(errorInfo: any): errorInfo is AllowedValuesErrorInfo {
+export function isAllowedValuesError(
+  errorInfo: any
+): errorInfo is AllowedValuesErrorInfo {
   return errorInfo.allowedValues;
 }
 
