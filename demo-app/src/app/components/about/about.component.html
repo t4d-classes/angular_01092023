@@ -1,1 +1,24 @@
 <p>about works!</p>
+
+<p>id: {{id}}</p>
+
+<form [formGroup]="contactForm">
+
+  <label>
+    Full Name:
+    <app-full-name-control formControlName="fullName"></app-full-name-control>
+  </label>
+
+  <label>
+    Email:
+    <input formControlName="email">
+  </label>
+
+  <label>
+    Phone:
+    <input formControlName="phone">
+  </label>
+
+  <button (click)="submitForm()">Submit</button>
+
+</form>

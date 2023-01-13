@@ -1,0 +1,17 @@
+<fieldset [formGroup]="fullNameForm">
+
+  <div>
+    <label for="firstname-input">First Name:</label>
+    <input type="text" id="firstname-input"
+      formControlName="firstName"
+      (input)="doInput()" (blur)="doBlur()">
+  </div>
+
+  <div>
+    <label for="lastname-input">Last Name:</label>
+    <input type="text" id="lastname-input"
+    formControlName="lastName"
+    (input)="doInput()" (blur)="doBlur()">
+  </div>
+
+</fieldset>

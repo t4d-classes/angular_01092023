@@ -6,7 +6,7 @@ import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
+  { path: 'about/:id', component: AboutComponent },
   {
     path: 'color-tool',
     loadChildren: () =>
