@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import {
   ReplaceCar,
   RemoveCar,
   ArchiveCar,
+  RefreshCars,
 } from '../../car-tool.state';
 
 @Component({
@@ -19,13 +20,17 @@ import {
   templateUrl: './car-home.component.html',
   styleUrls: ['./car-home.component.css'],
 })
-export class CarHomeComponent {
+export class CarHomeComponent implements OnInit {
   @Select(CarToolState.editCarId) editCarId$!: Observable<number>;
   @Select(CarToolState.cars) cars$!: Observable<Car[]>;
 
   headerText = 'Car Tool';
 
   constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(new RefreshCars());
+  }
 
   doEditCar(carId: number) {
     this.store.dispatch(new EditCar(carId));
