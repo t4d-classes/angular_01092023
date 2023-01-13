@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 
 import { SharedModule } from '../shared/shared.module';
+import { ColorToolRoutingModule } from './color-tool.routing';
 
 import { ColorHomeComponent } from './components/color-home/color-home.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
@@ -18,8 +19,9 @@ import { ColorsState } from './colors.state';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule,
     NgxsModule.forFeature([ColorsState]),
+    ColorToolRoutingModule,
+    SharedModule,
   ],
   exports: [ColorHomeComponent],
 })

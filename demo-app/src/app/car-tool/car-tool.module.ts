@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 
 import { SharedModule } from '../shared/shared.module';
+import { CarToolRoutingModule } from './car-tool.routing';
 
 import { CarHomeComponent } from './components/car-home/car-home.component';
 import { CarTableComponent } from './components/car-table/car-table.component';
@@ -27,6 +28,7 @@ import { CarToolState } from './car-tool.state';
     ReactiveFormsModule,
     HttpClientModule,
     NgxsModule.forFeature([CarToolState]),
+    CarToolRoutingModule,
     SharedModule,
   ],
   exports: [CarHomeComponent],
