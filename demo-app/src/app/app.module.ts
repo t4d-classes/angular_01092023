@@ -3,19 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgxsModule } from '@ngxs/store';
 
-import { ColorToolModule } from './color-tool/color-tool.module';
-import { CarToolModule } from './car-tool/car-tool.module';
+import { AppRoutingModule } from './app.routing';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    ColorToolModule,
-    CarToolModule,
-    NgxsModule.forRoot([]),
-  ],
+  declarations: [AppComponent, HomeComponent, AboutComponent],
+  imports: [BrowserModule, NgxsModule.forRoot([]), AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
