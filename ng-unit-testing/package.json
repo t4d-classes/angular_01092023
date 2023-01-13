@@ -1,0 +1,44 @@
+{
+  "name": "car-tool-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "run-p web rest",
+    "web": "ng serve",
+    "rest": "json-server --port 3010 db.json",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.0.0",
+    "@angular/common": "^14.0.0",
+    "@angular/compiler": "^14.0.0",
+    "@angular/core": "^14.0.0",
+    "@angular/forms": "^14.0.0",
+    "@angular/platform-browser": "^14.0.0",
+    "@angular/platform-browser-dynamic": "^14.0.0",
+    "@angular/router": "^14.0.0",
+    "rxjs": "^7.5.5",
+    "zone.js": "^0.11.5"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.0.0",
+    "@angular/cli": "^14.0.0",
+    "@angular/compiler-cli": "^14.0.0",
+    "@types/jasmine": "^4.0.3",
+    "@types/node": "^17.0.38",
+    "jasmine-core": "^4.1.1",
+    "json-server": "^0.17.0",
+    "karma": "^6.3.20",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-coverage": "^2.2.0",
+    "karma-jasmine": "^5.0.1",
+    "karma-jasmine-html-reporter": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.2"
+  }
+}
