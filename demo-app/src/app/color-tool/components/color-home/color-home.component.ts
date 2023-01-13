@@ -4,7 +4,12 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
-import { ColorsState, AppendColor, RemoveColor } from '../../colors.state';
+import {
+  ColorsState,
+  AppendColor,
+  RemoveColor,
+  RefreshColors,
+} from '../../colors.state';
 
 @Component({
   selector: '.app-color-home', // any valid css
@@ -20,7 +25,9 @@ export class ColorHomeComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(new RefreshColors());
+  }
 
   doAddColor(color: NewColor) {
     this.store.dispatch(new AppendColor(color));

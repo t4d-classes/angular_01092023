@@ -1,32 +1,28 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ColorsService {
-  private colors: Color[] = [
-    { id: 1, name: 'red', hexcode: 'ff0000' },
-    { id: 2, name: 'green', hexcode: '00ff00' },
-    { id: 3, name: 'blue', hexcode: '0000ff' },
-  ];
+  constructor(private httpClient: HttpClient) {}
 
-  constructor() {}
-
-  public all(): Color[] {
-    return [...this.colors];
+  public all() {
+    return this.httpClient.get<Color[]>('http://localhost:3060/colors');
   }
 
   public append(newColor: NewColor) {
-    this.colors = [
-      ...this.colors,
-      {
-        id: Math.max(...this.colors.map((c) => c.id), 0) + 1,
-        ...newColor,
-      },
-    ];
+    return this.httpClient.post<Color>(
+      'http://localhost:3060/colors',
+      newColor
+    );
   }
 
   public remove(colorId: number) {
-    this.colors = this.colors.filter((c) => c.id !== colorId);
+    return this.httpClient.delete<void>(
+      `http://localhost:3060/colors/${encodeURIComponent(colorId)}`
+    );
   }
 }

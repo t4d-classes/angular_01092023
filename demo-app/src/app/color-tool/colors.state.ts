@@ -1,6 +1,13 @@
+import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
+import { tap } from 'rxjs';
 
 import { Color, NewColor } from 'src/app/color-tool/models/colors';
+import { ColorsService } from './services/colors.service';
+
+export class RefreshColors {
+  static readonly type = '[Colors] Refresh Colors';
+}
 
 export class AppendColor {
   static readonly type = '[Colors] Append Color';
@@ -14,14 +21,11 @@ export class RemoveColor {
 
 export type ColorsStateModel = { colors: Color[] };
 
+@Injectable()
 @State<ColorsStateModel>({
   name: 'colors',
   defaults: {
-    colors: [
-      { id: 1, name: 'red', hexcode: 'ff0000' },
-      { id: 2, name: 'green', hexcode: '00ff00' },
-      { id: 3, name: 'blue', hexcode: '0000ff' },
-    ],
+    colors: [],
   },
 })
 export class ColorsState {
@@ -30,27 +34,34 @@ export class ColorsState {
     return state.colors;
   }
 
+  constructor(private colorsSvc: ColorsService) {}
+
+  @Action(RefreshColors)
+  refreshColors(ctx: StateContext<ColorsStateModel>) {
+    return this.colorsSvc.all().pipe(
+      tap((colors) => {
+        ctx.patchState({
+          colors,
+        });
+      })
+    );
+  }
+
   @Action(AppendColor)
   appendColor(ctx: StateContext<ColorsStateModel>, action: AppendColor) {
-    const state = ctx.getState();
-    ctx.setState({
-      ...state,
-      colors: [
-        ...state.colors,
-        {
-          ...action.color,
-          id: Math.max(...state.colors.map((c) => c.id), 0) + 1,
-        },
-      ],
-    });
+    return this.colorsSvc.append(action.color).pipe(
+      tap(() => {
+        ctx.dispatch(new RefreshColors());
+      })
+    );
   }
 
   @Action(RemoveColor)
   removeColor(ctx: StateContext<ColorsStateModel>, action: RemoveColor) {
-    const state = ctx.getState();
-    ctx.setState({
-      ...state,
-      colors: state.colors.filter((c) => c.id !== action.colorId),
-    });
+    return this.colorsSvc.remove(action.colorId).pipe(
+      tap(() => {
+        ctx.dispatch(new RefreshColors());
+      })
+    );
   }
 }
