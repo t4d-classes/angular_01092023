@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 import { Car } from '../../models/cars';
 
@@ -6,15 +12,14 @@ import { Car } from '../../models/cars';
   selector: 'app-car-table',
   templateUrl: './car-table.component.html',
   styleUrls: ['./car-table.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
-  
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarTableComponent {
   @Input()
-  cars: Car[] = [];
+  cars: Car[] | null = [];
 
   @Input()
-  editCarId = -1;
+  editCarId: number | null = -1;
 
   @Output() editCar = new EventEmitter<number>();
   @Output() deleteCar = new EventEmitter<number>();

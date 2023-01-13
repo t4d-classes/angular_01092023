@@ -60,7 +60,7 @@ export type CarToolStateModel = { editCarId: number; cars: Car[] };
     ],
   },
 })
-export class CarsState {
+export class CarToolState {
   @Selector()
   static editCarId(state: CarToolStateModel) {
     return state.editCarId;
